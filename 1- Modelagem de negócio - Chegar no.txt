@@ -1,0 +1,62 @@
+1- Modelagem de negócio - Chegar no cliente e ter o contato com ele 
+	Conversar com o cliente e ver sua necessidade
+	Funcionário: nome, departamento, cpf, cod_func
+	departamento: nome, cod_dep
+
+	REGRAS DE NEGÓCIOS
+		* Um funcionário pode pertencer a apenas um único departamento
+		* Um departamento pode ter vários funcionários
+
+
+2- Modelo conceitual - Diagrama Entidade Relacionamento 
+	Entidade - Conjunto de dados (funcionário e departamento no caso)
+	_____________
+	|Funcionário|
+		-> . cod_func
+		-> cod_dep
+		-> NomeFunc
+		-> CPF	
+	______________
+	|Departamento|
+		-> . cod_dep
+		-> NomeDep
+
+	|Funcionário| (1:N(N)) - |Pertence| - (1:1(1)) |Departamento|
+
+	com * = pk
+
+	Primary key (pk) - cod_func (simbolizar com bolinha pintada)
+		- unique
+		- not null
+	Chave candidata - segunda opção para chave primária
+
+	Foreign key (fk) - Primary key que vai para outra entidade (simbolizar com #)
+
+Cardinalidade
+ min  max
+  1    1
+  1    N
+  0    N
+  0    1
+	
+	O primeiro número se lê como mínimo e o segundo número como máximo Ex:. 1:1 (se não tiver nada escrito o mínimo é 1)
+
+No modelo conceitual mostra-se N mas na programação é estipulado um número
+
+
+** Regra 1 **
+	Em um relacionamento com cardinalidade 1:1 - 1:N, a chave estrangeira deve ficar sempre no lado "N".
+
+** Regra 2 **
+	Em relacionamento com cardinalidade 1:N - 1:N, o relacionamento se torna uma entidade que irá conter ambas FK.
+
+3- Modelo Lógico
+	Tabelas, planilhas
+	
+
+
+4- Modelo físico
+	SQL
+	
+	
+	
