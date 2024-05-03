@@ -59,4 +59,3 @@ No modelo conceitual mostra-se N mas na programação é estipulado um número
 	SQL
 	
 	
-	

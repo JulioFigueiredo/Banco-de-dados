@@ -19,6 +19,8 @@ CREATE TABLE func_proj (
 	CONSTRAINT fk_projetos FOREIGN KEY (id_projetos) REFERENCES projetos (id_projetos)
 )
 
+SELECT * FROM func_proj
+
 INSERT INTO funcionarios (id_func, nome_func, data_adm) VALUES
 (1, 'Ana', '2019-08-20'),
 (2, 'Bernardo', '2016-10-18'),
@@ -54,9 +56,37 @@ INSERT INTO func_proj (id_func, id_projetos) VALUES
 (7, 4),
 (8, 3),
 (9, 2),
-(10, 1);
+(10, 1), 
+(3, 10),
+(4, 9),
+(5, 8),
+(6, 7),
+(7, 6),
+(8, 5),
+(9, 4),
+(10, 3),
+(1, 2),
+(2, 1)
+
+DROP TABLE projetos
 
 SELECT * FROM funcionarios
 
 SELECT * FROM projetos
 
+-- A
+SELECT funcionarios.nome_func, projetos.nome_projeto
+FROM (projetos NATURAL INNER JOIN func_proj)
+INNER JOIN funcionarios USING (id_func)
+WHERE projetos.nome_projeto = 'DataGuard'
+
+-- B
+SELECT projetos.nome_projeto, funcionarios.nome_func
+FROM (funcionarios NATURAL INNER JOIN func_proj)
+INNER JOIN projetos USING (id_projetos)
+WHERE funcionarios.nome_func = 'Julio'
+
+-- C
+SELECT
+(SELECT COUNT(*) FROM func_proj) / 
+(SELECT COUNT(*) FROM projetos) AS result_divisao;
